@@ -5,10 +5,13 @@
  */
 package unitec.primavera;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,6 +64,41 @@ public class ControladorMensajitos {
              //pues son unicos, no arrays, no list, es 1 solo Mensaje
      {
          return mensa.findById(id).get();
+     }
+     
+     //tiene que estar abierto el postman :)
+     //para guardar se ocupa S I E M P R E EL POST 
+     @PostMapping(path="/mensaje", consumes="application/json")
+     
+     //son 2 argumentos, la< entidad del mensaje y el consumes
+     //por que estamos consumiendo un json, en las apps se consume y se da
+     public Status guardar(@RequestBody String json) throws Exception 
+     {
+          
+     //throws exception por si el json que mandamos va mal formado...
+     
+     //con eso se quita el error de abajo del mapper 
+         //Status es el tipo de retorno
+         //request body es el "cuerpo" de lo que nosottos enviamos al servidor
+         //por ejemplo en un login, nosotros enviamos ese request al autenticarnos
+         //es de tipo json, es de fromato string json
+         
+         //recibimos a json con los brazos abiertos !!!
+         ObjectMapper maper=new ObjectMapper();
+         
+         //la clase ObjectMapper es normal en estas apps.
+         //es un objeto mapeador que convierte de json a java y de java a json
+         Mensajito mensajito = maper.readValue(json, Mensajito.class);
+         
+         //tiene 2 argumentos
+         //el primero que es el string de json
+         //el segundo es el que lo convierte a un objeto de tipo e la clase Mensajito
+         //la excepcion que saldria seria el bad Request....
+         System.out.println (mensajito);
+         Status status=new Status();
+         status.setSuccess(true);
+         status.setMensaje("Mensajito guardado con exitoo!!:)");
+         return status;
      }
     }
 
