@@ -7,14 +7,17 @@ package unitec.primavera;
 
 import java.util.ArrayList;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
 /**
  *
  * @author jimenameloplaza
  */
-public interface RepositorioMensajes extends MongoRepository<Mensajito, String> {
+public interface RepositorioDireccion extends MongoRepository<Direccion, String>{
     
+    //metodo para buscar por calle (que era titulo en Mensajito).
     
-    //metodo para buscar pot titulo.
+    ArrayList<Direccion> findByCalle(String calle);
+    
     /*Cuando buscamos por titulo, vamos a tener varias salidas
     si buscamos especificamnete de un titulo, necesitamos poner
     en el metodo le tipo de retorno que nosotros queremos...
@@ -32,6 +35,7 @@ public interface RepositorioMensajes extends MongoRepository<Mensajito, String> 
     NO LLEVA LOGICA, POR QUE ES UNA INTERFAZ.
     
     LOS METODOS NO LLEVAN LOGICA*/
+
+
     
-        ArrayList<Mensajito> findByTitulo(String titulo);
 }

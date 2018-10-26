@@ -18,7 +18,7 @@ public class Mensajito {
     /*ESTA ES UNA CLASE TIPO ENTIDAD,
     GENERA UNA ENTIDAD DE TIPO MONGO :)
     */
-    
+    @Id
     String id;
     String titulo;
     String cuerpo;
