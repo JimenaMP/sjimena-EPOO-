@@ -100,7 +100,7 @@ public class PrimaveraApplication implements CommandLineRunner{
        //repoClientes.save(new Cliente ("Jimena","mail",Direccion.direccion));
        
        //Buscar todos
-       for(Cliente cli: repoClientes.findAll())
+       /*for(Cliente cli: repoClientes.findAll())
        {
            System.out.println(cli);
        }
@@ -114,5 +114,6 @@ public class PrimaveraApplication implements CommandLineRunner{
         //actualizar un cliente:
         //repoClientes.save(new Cliente ("Jimena nuebo","mail actualizafo", Direccion.direccion));
         System.out.println(repoClientes.findByNombre("Cliente Actualizado!!!"));
+    }*/
     }
 }
