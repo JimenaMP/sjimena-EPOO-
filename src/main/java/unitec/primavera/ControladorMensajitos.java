@@ -8,6 +8,7 @@ package unitec.primavera;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
+
+//Dejando entrar el dominio de stackblitz, para solo lectura (select)
+@CrossOrigin(origins={"https://angular-bqjzew.stackblitz.io"})
 public class ControladorMensajitos {
     //Mi primer hola mundo desde REST API con spring
     @Autowired RepositorioMensajes mensa;
